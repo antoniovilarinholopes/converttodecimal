@@ -18,7 +18,7 @@ class Test24(unittest.TestCase):
     converter = baseconverter.DecimalBaseConverter("G",self.base)
     self.tests.append(converter)
     self.results.append(16)
-    converter = baseconverter.DecimalBaseConverter("O",self.base)
+    converter = baseconverter.DecimalBaseConverter("N",self.base)
     self.tests.append(converter)
-    self.results.append(24)
+    self.results.append(23)
          

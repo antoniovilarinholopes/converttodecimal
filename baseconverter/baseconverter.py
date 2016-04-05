@@ -1,5 +1,7 @@
 #!/usr/bin/python3.4
 
+from exceptions import *
+
 class DecimalBaseConverter:
   def __init__(self, number, base):
     self._number = number
@@ -12,16 +14,16 @@ class DecimalBaseConverter:
     if(not all(c.isalnum() for c in list(self._number))):
       #print("Invalid digit in number provided")
       #exit(1)
-      raise Exception("Invalid digit in number provided")
+      raise NotAllNumCharException("Invalid digit in number provided")
     
     digits = map(lambda c : ord(c) - self._zero_ascci if(c.isdigit()) else ord(c.upper()) - self._a_ascci, self._number)
 
-    invalid_digits = filter(lambda d : d > self._base, digits)
+    invalid_digits = filter(lambda d : d >= self._base, digits)
     if(invalid_digits):
       invalid_digits = map(lambda c : chr(c + self._zero_ascci) if(c < 10) else chr(c + self._a_ascci).upper(), invalid_digits)
 #      print("Using invalid digits {} for base {}".format(invalid_digits, self._base))
 #      exit(1)
-      raise Exception("Using invalid digits {} for base {}".format(invalid_digits, self._base))
+      raise InvalidDigitForBaseException("Using invalid digits {} for base {}".format(invalid_digits, self._base))
 
     num_digits = len(self._number)
     max_power = num_digits - 1
