@@ -20,5 +20,5 @@ class TestOctal(unittest.TestCase):
     self.results.append(8)
     converter = baseconverter.DecimalBaseConverter("10",8)
     self.tests.append(converter)
-    self.results.append(10)
+    self.results.append(8)
          

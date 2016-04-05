@@ -10,15 +10,17 @@ class TestHex(unittest.TestCase):
     for conv, result in zip(self.tests, self.results):
       self.assertEqual(conv.convert(), result)
 
+#    converter = baseconverter.DecimalBaseConverter("G",15)
+#    self.assertRaises(Exception, converter.convert())
 
   def setUp(self):       
-    converter = baseconverter.DecimalBaseConverter("F",16)
+    converter = baseconverter.DecimalBaseConverter("F",15)
     self.tests.append(converter)
     self.results.append(15)
-    converter = baseconverter.DecimalBaseConverter("1E",16)
+    converter = baseconverter.DecimalBaseConverter("1E",15)
     self.tests.append(converter)
-    self.results.append(30)
-    converter = baseconverter.DecimalBaseConverter("21",16)
+    self.results.append(29)
+    converter = baseconverter.DecimalBaseConverter("21",15)
     self.tests.append(converter)
-    self.results.append(33)
+    self.results.append(31)
          

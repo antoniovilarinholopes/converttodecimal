@@ -20,5 +20,5 @@ class Test36(unittest.TestCase):
     self.results.append(30)
     converter = baseconverter.DecimalBaseConverter("21",16)
     self.tests.append(converter)
-    self.results.append(30)
+    self.results.append(33)
          
