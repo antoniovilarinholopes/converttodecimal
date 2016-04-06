@@ -1,6 +1,6 @@
 import unittest
 
-import baseconverter
+import baseconverter as bctr
 
 class TestOctal(unittest.TestCase):
   tests = []
@@ -10,12 +10,16 @@ class TestOctal(unittest.TestCase):
     for conv, result in zip(self.tests, self.results):
       self.assertEqual(conv.convert(), result)
 
+    converter = bctr.DecimalBaseConverter("8",self.base)
+    with self.assertRaises(bctr.InvalidDigitForBaseException) as context:
+      converter.convert()
+    self.assertTrue("invalid digits" in "".join(context.exception))
 
   def setUp(self):       
-    converter = baseconverter.DecimalBaseConverter("7",self.base)
+    converter = bctr.DecimalBaseConverter("7",self.base)
     self.tests.append(converter)
     self.results.append(7)
-    converter = baseconverter.DecimalBaseConverter("10",self.base)
+    converter = bctr.DecimalBaseConverter("10",self.base)
     self.tests.append(converter)
     self.results.append(8)
          

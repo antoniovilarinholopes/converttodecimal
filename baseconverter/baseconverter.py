@@ -14,7 +14,7 @@ class DecimalBaseConverter:
     if(not all(c.isalnum() for c in list(self._number))):
       #print("Invalid digit in number provided")
       #exit(1)
-      raise NotAllNumCharException("Invalid digit in number provided")
+      raise NotAllNumCharsException("Invalid digit in number provided")
     
     digits = map(lambda c : ord(c) - self._zero_ascci if(c.isdigit()) else ord(c.upper()) - self._a_ascci, self._number)
 

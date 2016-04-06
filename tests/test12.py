@@ -1,6 +1,6 @@
 import unittest
 
-import baseconverter
+import baseconverter as bctr
 
 class Test12(unittest.TestCase):
   tests = []
@@ -11,18 +11,22 @@ class Test12(unittest.TestCase):
     for conv, result in zip(self.tests, self.results):
       self.assertEqual(conv.convert(), result)
 
+    converter = bctr.DecimalBaseConverter("C",self.base)
+    with self.assertRaises(bctr.InvalidDigitForBaseException) as context:
+      converter.convert()
+    self.assertTrue("invalid digits" in "".join(context.exception))
 
   def setUp(self):       
-    converter = baseconverter.DecimalBaseConverter("9",self.base)
+    converter = bctr.DecimalBaseConverter("9",self.base)
     self.tests.append(converter)
     self.results.append(9)
-    converter = baseconverter.DecimalBaseConverter("B",self.base)
+    converter = bctr.DecimalBaseConverter("B",self.base)
     self.tests.append(converter)
     self.results.append(11)
-    converter = baseconverter.DecimalBaseConverter("10",self.base)
+    converter = bctr.DecimalBaseConverter("10",self.base)
     self.tests.append(converter)
     self.results.append(12)
-    converter = baseconverter.DecimalBaseConverter("100000",self.base)
+    converter = bctr.DecimalBaseConverter("100000",self.base)
     self.tests.append(converter)
     self.results.append(248832)
          
